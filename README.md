@@ -15,15 +15,15 @@
 
 ### 5 Technical Concepts That Interested Me
 
-1. **Defense in Depth on Linux**: Layering controls such as file permissions (for example, making sure `/etc/shadow` is never world-readable), disabling unneeded kernel modules, automated patching, and auditing so that no single failure exposes the whole system.
+1. **The Cloud Shared Responsibility Model** *(Cloud)*: Moving a workload to a cloud provider like AWS or Azure doesn't move all of the security work with it. The provider secures the underlying infrastructure, but the customer is still responsible for things like identity, access, data, and configuration. Exactly where that line falls changes with the deployment model (IaaS, PaaS, or SaaS).
 
-2. **TLS and Forward Secrecy**: How a TLS handshake uses Diffie-Hellman / Elliptic Curve Diffie-Hellman to negotiate session keys without ever sending the secret over the wire, and why TLS 1.3 mandates forward secrecy so past sessions stay safe even if long-term keys are later compromised.
+2. **Cloud-Native Security Monitoring** *(Cloud / AI)*: Microsoft Defender for Cloud watches cloud resources for misconfigurations, vulnerabilities, and suspicious activity, extending on-premises monitoring principles into the cloud. Microsoft Sentinel, a cloud-native SIEM, scales log ingestion and search on demand without the hardware planning traditional SIEMs require.
 
-3. **Firewall Rule Ordering and Shadowing**: A broad "allow" rule placed above a specific "deny" rule shadows it, so the deny is never reached. A rule set can pass syntax checks and still be functionally broken if policy order isn't verified.
+3. **Prompt Injection and Responsible AI** *(AI Security)*: AI tools can be manipulated through hidden instructions buried in untrusted content like emails, documents, or web pages. This is a genuinely new risk specific to AI-assisted work. LLMs can also hallucinate fact-sounding answers that are simply wrong, so AI output needs the same skepticism and human review as any unverified source, and sensitive customer data should never be fed into AI tools carelessly.
 
-4. **Detecting Password Spray Attacks in Splunk**: Searching for failed logins across all accounts in a short time window, grouped by source IP. One IP failing against dozens of accounts is a spray campaign, while a single failed login is usually just a typo. The response scales with the pattern, not the single event.
+4. **Data Governance with DLP, Sensitivity Labels, and Row-Level Security** *(GRC / Cloud)*: Sensitivity labels like "Confidential" or "Highly Restricted" travel with a report and control who can view or export it. DLP policies actively detect patterns like full account numbers and block risky sharing. Row-level security limits each viewer to only the data in their scope. These controls should be designed in from the start, not bolted on at the end.
 
-5. **AI-Assisted Security Operations**: Using Microsoft Security Copilot and the Defender XDR Alert Triage and Phishing Triage agents to help Tier 1 analysts prioritize alerts faster, while keeping a human in the loop to review and validate what the AI recommends.
+5. **Compliance-Driven Least Privilege** *(GRC)*: In banking, security controls aren't just best practice. They're regulatory obligations under frameworks like PCI DSS, SOX, GLBA, FFIEC guidance, and NYDFS Part 500. Auditors expect regular access reviews proving accounts hold only the rights they need, quarterly revocation of stale role assignments, and just-in-time (JIT) admin access, which applies least privilege not only to permissions but to time itself.
 
 ### 7 Complex Concepts I Didn't Know Before
 
